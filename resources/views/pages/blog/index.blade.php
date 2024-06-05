@@ -22,7 +22,7 @@
                     <img src="{{ asset('guest/img') }}/intern/blog1.jpg" alt="Teknik menguasai Negosiasi" class="img-fluid">
                 </div>
 
-                <a href="{{route('blog.detial', ['id' => 1])}}" class="title">Menguasai Teknik Negosiasi Win-Win Solution: Langkah Sukses dalam
+                <a href="{{route('blog.detail', ['id' => 1])}}" class="title">Menguasai Teknik Negosiasi Win-Win Solution: Langkah Sukses dalam
                     Berbisnis</a>
 
                 <div class="meta-top">
@@ -65,7 +65,7 @@
                     <img src="{{ asset('guest/img') }}/intern/blog2.jpg" alt="Teknik menguasai Negosiasi" class="img-fluid">
                 </div>
 
-                <a href="{{route('blog.detial', ['id' => 1])}}" class="title">Pendaftaran LPDP Tahap 2 2024 Segera Dibuka! Siapkan Dokumen dan Temukan
+                <a href="{{route('blog.detail', ['id' => 1])}}" class="title">Pendaftaran LPDP Tahap 2 2024 Segera Dibuka! Siapkan Dokumen dan Temukan
                     Tips Lolos di Sini!</a>
 
                 <div class="meta-top">
@@ -105,7 +105,7 @@
                     <img src="{{ asset('guest/img') }}/intern/blog3.jpg" alt="Teknik menguasai Negosiasi" class="img-fluid">
                 </div>
 
-                <a href="{{route('blog.detial', ['id' => 1])}}" class="title">10 Tips Menganggur Produktif buat Kamu Para Jobseeker!</a>
+                <a href="{{route('blog.detail', ['id' => 1])}}" class="title">10 Tips Menganggur Produktif buat Kamu Para Jobseeker!</a>
 
                 <div class="meta-top">
                     <ul>
