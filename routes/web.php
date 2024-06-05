@@ -3,7 +3,7 @@
 use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Management\BlogController as ManagementBlogController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Management\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,11 +28,18 @@ Route::controller(BlogController::class)->group(function () {
 
 // user access
 Route::middleware(['auth'])->group(function () {
+    Route::prefix('management')->name('management.')->group(function () {
+        Route::controller(ManagementBlogController::class)->group(function () {
+            Route::get('/blog', 'index')->name('blog.index');
+        });
 
-    Route::controller(ManagementBlogController::class)->group(function () {
-        Route::get('/manajemen/blog', 'index')->name('management.blog.index');
+        Route::controller(UserController::class)->group(function () {
+            Route::get('/user', 'index')->name('user.index');
+            Route::get('/user/getTableUser', 'getTableUser')->name('user.getTableUser');
+            Route::post('/user/store', 'store')->name('user.store');
+            Route::delete('/user/destroy', 'destroy')->name('user.destroy');
+        });
     });
-
 });
 
 require __DIR__ . '/auth.php';

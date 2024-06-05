@@ -28,7 +28,7 @@
             <i class="bi bi-list d-block d-md-none" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"></i>
         </nav><!-- .navbar -->
 
-        <a href="../dashboard/" target="_blank" class="appointment-btn">Login<span
+        <a href="/login" class="appointment-btn">Login<span
                 class="d-none d-md-inline"></span></a>
     </div>
 </header><!-- End Header -->
