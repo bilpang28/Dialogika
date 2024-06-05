@@ -8,6 +8,11 @@ class BlogController extends Controller
 {
     public function index()
     {
-        return view('');
+        return view('pages.blog.index');
+    }
+
+    public function detail($id)
+    {
+        return view('pages.blog.detail');
     }
 }

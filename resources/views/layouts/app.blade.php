@@ -70,8 +70,8 @@ class="app-default page-loading-enabled page-loading">
 <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
 	<div class="app-page flex-column flex-column-fluid" id="kt_app_page">
 		@yield('navbar')
-		<div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
-			@yield('sidebar')
+		{{-- <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
+			@yield('sidebar') --}}
 			<div class="app-main flex-column flex-row-fluid" id="kt_app_main">
 				<div class="d-flex flex-column flex-column-fluid">
 					@yield('toolbar')
@@ -83,7 +83,7 @@ class="app-default page-loading-enabled page-loading">
 				</div>
 				@yield('footer')
 			</div>
-		</div>
+		{{-- </div> --}}
 	</div>
 </div>
 

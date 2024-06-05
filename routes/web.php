@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\Sales\Customer\CustomerController;
+use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\Sales\Opportunity\Survey\SurveyController;
-use App\Http\Controllers\ProjectManagement\ProjectManagementController;
+use App\Http\Controllers\Management\BlogController as ManagementBlogController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -18,15 +16,23 @@ use App\Http\Controllers\UserController;
 |
 */
 
+Route::get('/', function () {
+    return redirect()->route('blog.index');
+});
+
+// guest access
+Route::controller(BlogController::class)->group(function () {
+    Route::get('/blog','index')->name('blog.index');
+    Route::get('/blog/{id}','detail')->name('blog.detail');
+});
+
+// user access
 Route::middleware(['auth'])->group(function () {
 
-    Route::controller(HomeController::class)->group(function () {
-        Route::get('/', 'index')->name('dashboard');
+    Route::controller(ManagementBlogController::class)->group(function () {
+        Route::get('/manajemen/blog', 'index')->name('management.blog.index');
     });
 
-    Route::controller(UserController::class)->group(function () {
-        Route::get('/adm','index')->name('index');
-    });
 });
 
 require __DIR__ . '/auth.php';
