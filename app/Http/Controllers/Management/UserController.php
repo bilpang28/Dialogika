@@ -46,7 +46,7 @@ class UserController extends Controller
         return response()->json(['message' => 'User created successfully']);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $request->validate([
             'name' => 'required',
@@ -54,7 +54,7 @@ class UserController extends Controller
             'role' => 'required',
         ]);
 
-        User::find($id)->update([
+        User::findOrFail($request->id)->update([
             'name' => $request->name,
             'email' => $request->email,
             'role' => $request->role,

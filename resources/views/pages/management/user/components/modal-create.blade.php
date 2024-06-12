@@ -16,8 +16,7 @@
                         data-kt-scroll-wrappers="#modal_import_emp_scroll" data-kt-scroll-offset="300px">
                         <div class="row mb-9">
                             <div class="col-lg-12 text-center mb-9">
-                                <span class="fs-1 fw-bolder text-dark d-block mb-1">Category File</span>
-                                {{-- <span class="fs-7 fw-semibold text-gray-500">Keanggotaan keluarga anda</span> --}}
+                                <span class="fs-1 fw-bolder text-dark d-block mb-1">Tambah Pengguna Baru</span>
                             </div>
                             <div class="col-12 mb-3">
                                 <label class="d-flex align-items-center fs-6 form-label mb-2">

@@ -9,7 +9,8 @@
 @endsection
 
 @section('content')
-    @include('pages.management.user.components.modal')
+    @include('pages.management.user.components.modal-create')
+    @include('pages.management.user.components.modal-edit')
     <div class="row justify-content-center m-20">
         <div class="col-lg-12">
             <div class="row justify-content-center">
@@ -41,7 +42,6 @@
                                                         <th>Email</th>
                                                         <th>Role</th>
                                                         <th>Birth Date</th>
-                                                        <th>Profile Picture</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>
@@ -62,9 +62,15 @@
     <script>
         let table;
 
-        const editClicked = () => {
-            console.log('edit clicked');
+        const editClicked = (data) => {
+            $('#edit_id').val(data.id);
+            $('#edit_name').val(data.name);
+            $('#edit_email').val(data.email);
+            $('#edit_role').val(data.role);
+            $('#edit_role').trigger('change');
+            $('#edit_birth_date').val(data.birth_date);
         }
+
         const deleteClicked = (id) => {
             $.ajax({
                 url: `{{ route('management.user.destroy') }}`,
@@ -132,9 +138,6 @@
                         },
                         {
                             data: 'birth_date',
-                        },
-                        {
-                            data: 'profile_pic',
                         },
                         {
                             data: 'action',

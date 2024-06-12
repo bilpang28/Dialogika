@@ -37,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/user', 'index')->name('user.index');
             Route::get('/user/getTableUser', 'getTableUser')->name('user.getTableUser');
             Route::post('/user/store', 'store')->name('user.store');
+            Route::post('/user/update', 'update')->name('user.update');
             Route::delete('/user/destroy', 'destroy')->name('user.destroy');
         });
     });
