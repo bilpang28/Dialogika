@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Management\BlogController as ManagementBlogController;
 use App\Http\Controllers\Management\UserController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,8 @@ Route::get('/', function () {
 
 // guest access
 Route::controller(BlogController::class)->group(function () {
-    Route::get('/blog','index')->name('blog.index');
-    Route::get('/blog/{id}','detail')->name('blog.detail');
+    Route::get('/blog', 'index')->name('blog.index');
+    Route::get('/blog/{id}', 'detail')->name('blog.detail');
 });
 
 // user access
@@ -39,6 +40,14 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/user/store', 'store')->name('user.store');
             Route::post('/user/update', 'update')->name('user.update');
             Route::delete('/user/destroy', 'destroy')->name('user.destroy');
+        });
+    });
+
+
+    Route::prefix('profile')->name('profile.')->group(function () {
+        Route::controller(ProfileController::class)->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::post('/update', 'update')->name('update');
         });
     });
 });

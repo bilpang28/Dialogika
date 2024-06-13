@@ -38,32 +38,6 @@
         </div>
         <div class="app-navbar flex-shrink-0">
             <div class="app-navbar-item ms-4">
-                <div class="btn btn-icon btn-color-gray-500 btn-active-color-primary w-35px h-35px w-md-45px h-md-45px"
-                    data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
-                    data-kt-menu-placement="bottom">
-                    <i class="fa-solid fa-bell fs-2"></i>
-                </div>
-                <div class="menu menu-sub menu-sub-dropdown menu-column w-350px" data-kt-menu="true">
-                    <div class="d-flex flex-column bgi-no-repeat rounded-top">
-                        <span class="fs-6 text-dark fw-bolder px-9 mt-6 mb-3">Notifications</span>
-                    </div>
-                    <div class="scroll-y mh-325px px-8">
-                        @for ($i = 0; $i < 3; $i++)
-                            <div class="d-flex flex-stack py-2">
-                                <div class="d-flex align-items-center me-2">
-                                    <span class="badge badge-light-success me-4 px-3 py-2">2023/23/2 18:09</span>
-                                    <span class="fs-7 text-dark fw-semibold">Lorem ipsum dolor sit amet consectetur
-                                        adipisicing elit..</span>
-                                </div>
-                            </div>
-                        @endfor
-                    </div>
-                    <div class="text-center border-top mt-6">
-                        <a href="#!" class="fs-8 btn btn-color-gray-500 btn-active-color-primary">View All</a>
-                    </div>
-                </div>
-            </div>
-            <div class="app-navbar-item ms-4">
                 <a href="#" class="btn btn-icon btn-color-gray-500 w-35px h-35px w-md-45px h-md-45px"
                     data-kt-menu-trigger="{default:'click', lg: 'hover'}" data-kt-menu-attach="parent"
                     data-kt-menu-placement="bottom-end">
@@ -125,14 +99,8 @@
                         </div>
                         <div class="separator my-2"></div>
                         <div class="menu-item px-5 my-0">
-                            <a href="" class="menu-link px-5 py-2">
+                            <a href="{{route('profile.index')}}" class="menu-link px-5 py-2">
                                 <span class="menu-title position-relative">Profile
-                                </span>
-                            </a>
-                        </div>
-                        <div class="menu-item px-5 my-0">
-                            <a href="#!" class="menu-link px-5 py-2">
-                                <span class="menu-title position-relative">Setting
                                 </span>
                             </a>
                         </div>

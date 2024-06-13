@@ -1,6 +1,6 @@
 @extends('layouts.app')
-@section('title-apps', 'Paycheck')
-@section('sub-title-apps', 'Finance')
+@section('title-apps', 'User')
+@section('sub-title-apps', 'Management')
 @section('desc-apps', '27 Angka favoritku!')
 @section('icon-apps', 'fa-solid fa-money-check-dollar')
 
