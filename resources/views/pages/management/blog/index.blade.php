@@ -14,7 +14,7 @@
         </div>
         <div class="col-lg-6 d-flex justify-content-end">
             <div class="tab_all_menu_lead">
-                <a href="#kt_modal_tambah_lead" data-bs-toggle="modal" class="btn btn-info btn-sm me-3 btn_tambah_lead"><i
+                <a href="{{route('management.blog.create')}}" class="btn btn-info btn-sm me-3 btn_tambah_lead"><i
                         class="fa-solid fa-plus"></i>Artikel Baru</a>
             </div>
 

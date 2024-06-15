@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Management\BlogController as ManagementBlogController;
 use App\Http\Controllers\Management\UserController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ArticlesController;
+use App\Http\Controllers\Management\ArticlesController as ManagementArticlesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +34,8 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('management')->name('management.')->group(function () {
         Route::controller(ManagementBlogController::class)->group(function () {
             Route::get('/blog', 'index')->name('blog.index');
+            Route::get('/blog/create', 'create')->name('blog.create');
+            Route::post('/blog/store', 'store')->name('blog.store');
         });
 
         Route::controller(UserController::class)->group(function () {
@@ -41,8 +45,8 @@ Route::middleware(['auth'])->group(function () {
             Route::post('/user/update', 'update')->name('user.update');
             Route::delete('/user/destroy', 'destroy')->name('user.destroy');
         });
-    });
 
+    });
 
     Route::prefix('profile')->name('profile.')->group(function () {
         Route::controller(ProfileController::class)->group(function () {
