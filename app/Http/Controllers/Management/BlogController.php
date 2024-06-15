@@ -17,9 +17,12 @@ class BlogController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('pages.management.blog.article', compact('categories'));
+        return view('pages.management.blog.create', compact('categories'));
     }
-
+    public function edit(){
+        $categories = Category::all();
+        return view('pages.management.blog.edit', compact('categories'));
+    }
     public function store(Request $request)
     {
         $request->validate([
