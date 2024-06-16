@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
@@ -33,16 +34,24 @@ class BlogController extends Controller
             'source' => 'nullable|string|max:255',
             'profile_pic' => 'nullable|string|max:255',
         ]);
+        $file = $request->file("header_pic");
+        $header_pic = time() . "_" . $request->title . "." . $file->getClientOriginalExtension();
+        $file->storeAs('/article/header/', $header_pic, 'public');
 
-        Article::create([
+        if ($request->profile_pic) {
+            $file = $request->file("profile_pic");
+            $profile_pic = time() . "_" . $request->title . "." . $file->getClientOriginalExtension();
+            $file->storeAs('/articl/profile_pic/', $profile_pic, 'public');
+        }
+
+        $article = Article::create([
             'user_id' => Auth::user()->id,
             'category_id' => $request->category_id,
-            'header_pic' => $request->header_pic,
+            'header_pic' => $header_pic,
             'title' => $request->title,
             'body' => $request->body,
             'source' => $request->source,
-            'profile_pic' => $request->profile_pic,
-            'rating' => $request->rating,
+            'profile_pic' => $profile_pic,
         ]);
 
         return redirect()->route('articles.create')->with('success', 'Article created successfully.');
