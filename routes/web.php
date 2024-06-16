@@ -37,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('/blog/create', 'create')->name('blog.create');
             Route::get('/blog/edit', 'edit')->name('blog.edit');
             Route::post('/blog/store', 'store')->name('blog.store');
+            Route::get('/blog/detail/{id}', 'detail')->name('blog.detail');
         });
 
         Route::controller(UserController::class)->group(function () {
