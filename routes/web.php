@@ -35,9 +35,11 @@ Route::middleware(['auth'])->group(function () {
         Route::controller(ManagementBlogController::class)->group(function () {
             Route::get('/blog', 'index')->name('blog.index');
             Route::get('/blog/create', 'create')->name('blog.create');
-            Route::get('/blog/edit', 'edit')->name('blog.edit');
             Route::post('/blog/store', 'store')->name('blog.store');
             Route::get('/blog/detail/{id}', 'detail')->name('blog.detail');
+            Route::get('/blog/edit/{id}', 'edit')->name('blog.edit');
+            Route::post('/blog/update/{id}', 'update')->name('blog.update');
+            Route::delete('/blog/destroy', 'destroy')->name('blog.destroy');
         });
 
         Route::controller(UserController::class)->group(function () {

@@ -2,13 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
     public function index()
     {
-        return view('pages.profile.index');
+        if (Auth::user()->role != 'admin') {
+            $articles = Article::where('user_id', Auth::user()->id)->with(['user', 'category'])->paginate(9);
+        } else {
+            $articles = Article::with(['user', 'category'])->paginate(9);
+        }
+
+        return view('pages.profile.index' , compact('articles'));
     }
 
     public function update(Request $request)

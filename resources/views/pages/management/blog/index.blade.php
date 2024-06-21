@@ -31,7 +31,6 @@
 
             </div>
         </div>
-
         @include('pages.components.list-blog')
     </div>
 @endsection

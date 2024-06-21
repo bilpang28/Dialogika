@@ -8,7 +8,7 @@
 
 @section('content')
     <script src="{{ asset('/sense/plugins/custom/tinymce/tinymce.bundle.js') }}"></script>
-    <div class="container">
+    <div class="container mt-10">
         <h1>Create New Article</h1>
 
         @if ($errors->any())
@@ -44,7 +44,7 @@
                 <input type="text" class="form-control" id="title" name="title" maxlength="30" required>
             </div>
 
-            <div class="form-group mb-5">
+            {{-- <div class="form-group mb-5">
                 <label for="source">Source *optional</label>
                 <input type="text" class="form-control" id="source" name="source">
             </div>
@@ -52,7 +52,7 @@
             <div class="form-group mb-5">
                 <label for="profile_pic">Profile Picture </label>
                 <input type="file" class="form-control" id="profile_pic" name="profile_pic" accept="image/*">
-            </div>
+            </div> --}}
 
             <div class="form-group mb-5">
                 <label for="body">Body</label>
