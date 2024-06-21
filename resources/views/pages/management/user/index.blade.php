@@ -19,14 +19,14 @@
                         <div class="card-body">
                             <div class="row mb-6 align-items-center">
                                 <div class="col-lg-6 gap-3 d-flex align-items-center">
-                                    <span class="fs-7 text-uppercase fw-bolder text-dark d-none d-md-block">My Article
-                                        Collection</span>
+                                    <span class="fs-7 text-uppercase fw-bolder text-dark d-none d-md-block">Daftar pengguna
+                                        </span>
                                 </div>
                                 <div class="col-lg-6 d-flex justify-content-end">
                                     <div class="tab_all_menu_lead">
                                         <a href="#kt_modal_create_user" data-bs-toggle="modal"
                                             class="btn btn-info btn-sm btn_create_user"><i
-                                                class="fa-solid fa-plus"></i>Artikel Baru</a>
+                                                class="fa-solid fa-plus"></i>Pengguna baru</a>
                                     </div>
                                 </div>
                             </div>

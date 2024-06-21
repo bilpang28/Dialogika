@@ -57,8 +57,12 @@
             <div class="form-group mb-5">
                 <label for="body">Body</label>
                 <textarea id="kt_docs_tinymce_hidden" name="body" class="tox-target">
-
                 </textarea>
+            </div>
+
+            <div class="form-group mb-5">
+                <label for="tags">Tags</label>
+                <input type="text" class="form-control" id="tags" name="tags" placeholder="ayam, kucing, hewan">
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>

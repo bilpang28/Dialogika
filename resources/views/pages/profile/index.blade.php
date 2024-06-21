@@ -75,7 +75,7 @@
                 <div class="col-lg-9">
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">Blog Ku</h5>
+                            <h5 class="card-title">My Article Collection</h5>
                         </div>
                         <div class="card-body">
                             <div class="row">

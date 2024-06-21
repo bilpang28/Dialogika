@@ -9,7 +9,7 @@
         </div>
         <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
             <a href="">
-                <img alt="Logo" src="{{ asset('sense/media/svg/brand-logos/apple-itunes.svg') }}"
+                <img alt="Logo" src="{{ asset('sense/media/svg/brand-logos/apple-touch-icon.webp') }}"
                     class="h-35px d-none d-sm-inline" />
             </a>
         </div>
