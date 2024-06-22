@@ -57,6 +57,65 @@
                         </ul>
                     </div>
                 </div>
+                <div class="blog-details-area clearfix">
+                    <div class="blog-details-bottom">
+                      <div class="row align-items-baseline">
+                        <div class="col-xl-6 col-md-5">
+                          <div class="blog-details-share">
+                            <h6 class="share-title">Rate This Article:</h6>
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                <form class="rate" id="rate-us" onclick="HeroForm()">
+                                    <input type="radio" id="star5" name="Rating" value="5" />
+                                    <label for="star5" title="text">5 stars</label>
+                                    <input type="radio" id="star4" name="Rating" value="4" />
+                                    <label for="star4" title="text">4 stars</label>
+                                    <input type="radio" id="star3" name="Rating" value="3" />
+                                    <label for="star3" title="text">3 stars</label>
+                                    <input type="radio" id="star2" name="Rating" value="2" />
+                                    <label for="star2" title="text">2 stars</label>
+                                    <input type="radio" id="star1" name="Rating" value="1" />
+                                    <label for="star1" title="text">1 star</label>
+                                  </form>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Button trigger modal -->
+                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Give Me Your Comment</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                            <div class="reply-form">
+                                <p>Masukkan pendapat anda dalam kolom komentar berikut</p>
+                                        <form id="myForm" role="form">
+                                        <div class="row">
+
+                                            <div class="col-md-12 form-group">
+                                            <input type="text" name="Name" class="form-control" placeholder="Masukkan nama lengkap"
+                                                />
+                                            </div>
+                                            <div class="col-md-12">
+                                            <textarea class="form-control" name="Ket" rows="17"
+                                                placeholder="Masukkan Komentar anda"></textarea>
+                                            </div>
+
+                                        </div>
+                                        </form>
+                                    </div>
+                            </div>
+                            <div class="modal-footer">
+                            <button type="button" class="btn btn-primary">submit</button>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+
 
 
             </article><!-- End post article -->
