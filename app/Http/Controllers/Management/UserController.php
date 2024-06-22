@@ -31,9 +31,16 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email',
             'role' => 'required',
         ]);
+
+        $profile_pic = null;
+        if ($request->profile_pic) {
+            $file = $request->file("profile_pic");
+            $profile_pic = time() . "_" . $request->title . "." . $file->getClientOriginalExtension();
+            $file->storeAs('/user/profile/', $profile_pic, 'public');
+        }
 
         User::create([
             'name' => $request->name,
@@ -41,6 +48,7 @@ class UserController extends Controller
             'password' => bcrypt($request->password),
             'role' => 'writer',
             'birth_date' => $request->birth_date,
+            'profile_pic' => $profile_pic,
         ]);
 
         return response()->json(['message' => 'User created successfully']);
@@ -54,7 +62,21 @@ class UserController extends Controller
             'role' => 'required',
         ]);
 
-        User::findOrFail($request->id)->update([
+        $user = User::findOrFail($request->id);
+
+        $profile_pic = null;
+        if ($request->profile_pic) {
+            $file = $request->file("profile_pic");
+            if ($user->profile_pic) {
+                $profile_pic = $user->profile_pic;
+            } else {
+                $profile_pic = time() . "_" . $request->title . "." . $file->getClientOriginalExtension();
+                $user->update(['profile_pic' => $profile_pic]);
+            }
+            $file->storeAs('/user/profile/', $profile_pic, 'public');
+        }
+
+        $user->update([
             'name' => $request->name,
             'email' => $request->email,
             'role' => $request->role,
