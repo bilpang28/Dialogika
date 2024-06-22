@@ -49,6 +49,12 @@
             </div>
 
             <div class="form-group mb-5">
+                <label for="body">Body</label>
+                <textarea id="kt_docs_tinymce_hidden" name="body" class="tox-target">
+                </textarea>
+            </div>
+
+            <div class="form-group mb-5">
                 <label for="w">Writer</label>
                 <select name="writer_id[]" id="writer_id" class="form-control" data-control="select2" required multiple
                     placeholder="Pilih siapa penulisnya">
@@ -61,12 +67,6 @@
             <div class="form-group mb-5">
                 <label for="keyword">Keyword</label>
                 <input type="text" class="form-control" id="keyword" name="keyword" placeholder="ayam, kucing, hewan">
-            </div>
-
-            <div class="form-group mb-5">
-                <label for="body">Body</label>
-                <textarea id="kt_docs_tinymce_hidden" name="body" class="tox-target">
-                </textarea>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -91,9 +91,11 @@
                 url: "{{ route('management.blog.store') }}",
                 type: 'POST',
                 data: formData,
-                cache: false,
                 contentType: false,
                 processData: false,
+                header: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                },
                 success: function(data) {
                     toastr.success(data.message, 'Selamat 🚀 !');
 
@@ -103,7 +105,14 @@
                 },
                 error: function(xhr, status, error) {
                     const data = xhr.responseJSON;
-                    toastr.error(data, 'Opps!');
+                    const errors = data.errors;
+                    let toastrData = '';
+                    for (const key in errors) {
+                        if (errors.hasOwnProperty(key)) {
+                            toastrData += errors[key].join('<br>');
+                        }
+                    }
+                    toastr.error(toastrData, 'Opps!');
                 }
             });
         });

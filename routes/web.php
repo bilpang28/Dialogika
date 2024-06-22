@@ -27,6 +27,7 @@ Route::get('/', function () {
 Route::controller(BlogController::class)->group(function () {
     Route::get('/blog', 'index')->name('blog.index');
     Route::get('/blog/{id}', 'detail')->name('blog.detail');
+    Route::post('/blog/rating', 'rating')->name('blog.rating');
 });
 
 // user access

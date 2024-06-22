@@ -59,37 +59,7 @@
     <!-- Spreadsheet API Form Pendaftaran -->
     <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
         crossorigin="anonymous"></script>
-    <script>
-        function HeroForm() {
-            $.ajax({
-                url: "https://api.apispreadsheets.com/data/V67SEkSOUdvoeJQn/",
-                type: "post",
-                data: $("#rate-us").serializeArray(),
-                success: function() {
-                    alert("Thank You For Your Rating")
-                },
-                error: function() {
-                    alert("There was an error :(")
-                }
-            });
-        }
 
-        function Subcription() {
-            $.ajax({
-                url: "https://api.apispreadsheets.com/data/18511/",
-                type: "post",
-                data: $("#subcriptions").serializeArray(),
-                success: function() {
-                    // $('#subcription-modal').modal('show');
-                    // open("https://link.dialogika.co/open-whatsapp-group");
-                    window.location.href = "https://link.dialogika.co/open-whatsapp-group";
-                },
-                error: function() {
-                    alert("There was an error :(")
-                }
-            });
-        }
-    </script>
     <script>
         function SubForm() {
             $.ajax({

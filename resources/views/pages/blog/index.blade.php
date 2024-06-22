@@ -17,128 +17,48 @@
             </div>
         </div>
         <div class="col-lg-7 mt-4">
-            <article class="article">
-                <div class="post-img">
-                    <img src="{{ asset('guest/img') }}/intern/blog1.jpg" alt="Teknik menguasai Negosiasi" class="img-fluid">
-                </div>
+            @foreach ($articles as $article)
+                <article class="article">
+                    <div class="post-img">
+                        <img src="{{ asset('storage/article/header') .'/'. $article->header_pic }}" alt="Teknik menguasai Negosiasi" class="img-fluid">
+                    </div>
 
-                <a href="{{route('blog.detail', ['id' => 1])}}" class="title">Menguasai Teknik Negosiasi Win-Win Solution: Langkah Sukses dalam
-                    Berbisnis</a>
+                    <a href="{{route('blog.detail', ['id' => $article->id])}}" class="title">{{$article->title}}</a>
 
-                <div class="meta-top">
-                    <ul>
-                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="article.html">Arya Difa
-                                Hendrawan</a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time
-                                    datetime="Tanggalpenulisan">6 Juni
-                                    2024</time></a></li>
-                    </ul>
-                </div><!-- End meta top -->
-
-                <div class="content">
-                    <div class="row">
-
-                        <!-- 2 first paragraph of the draft -->
-                        <div class="mt-4">
-                            <p><span class="fw-lighter">Pelajari seni negosiasi win-win solution untuk
-                                    mencapai kesepakatan yang saling menguntungkan dan membangun hubungan
-                                    bisnis yang langgeng. Artikel ini mengulas langkah-langkah
-                                    strategis dan teori fundamental dalam menerapkan teknik negosiasi
-                                    win-win solution, membuka jalan menuju kesuksesan bisnis berkelanjutan.
-                            </p>
-                        </div>
-                        <div>
-
-                        </div>
-                    </div> <!-- End post content -->
-
-                    <div class="meta-bottom">
-                        <i class="bi bi-folder"></i>
-                        <ul class="cats">
-                            <li><a target="_blank" href="#">Negosiasi</a></li>
+                    <div class="meta-top">
+                        <ul>
+                            <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="article.html">{{$article->writer->name}}</a></li>
+                            <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time
+                                        datetime="Tanggalpenulisan">{{ Carbon\Carbon::parse($article->craeted_at)->format('d M Y') }}</time></a></li>
                         </ul>
+                    </div><!-- End meta top -->
 
-            </article>
-            <Br></Br>
-            <article class="article">
-                <div class="post-img">
-                    <img src="{{ asset('guest/img') }}/intern/blog2.jpg" alt="Teknik menguasai Negosiasi" class="img-fluid">
-                </div>
+                    <div class="content">
+                        {{-- <div class="row">
 
-                <a href="{{route('blog.detail', ['id' => 1])}}" class="title">Pendaftaran LPDP Tahap 2 2024 Segera Dibuka! Siapkan Dokumen dan Temukan
-                    Tips Lolos di Sini!</a>
+                            <!-- 2 first paragraph of the draft -->
+                            <div class="mt-4">
+                                <p><span class="fw-lighter">Pelajari seni negosiasi win-win solution untuk
+                                        mencapai kesepakatan yang saling menguntungkan dan membangun hubungan
+                                        bisnis yang langgeng. Artikel ini mengulas langkah-langkah
+                                        strategis dan teori fundamental dalam menerapkan teknik negosiasi
+                                        win-win solution, membuka jalan menuju kesuksesan bisnis berkelanjutan.
+                                </p>
+                            </div>
+                            <div>
 
-                <div class="meta-top">
-                    <ul>
-                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="article.html">Nasrudin
-                                Fahmi</a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time
-                                    datetime="Tanggalpenulisan">6 Juni
-                                    2024</time></a></li>
-                    </ul>
-                </div><!-- End meta top -->
+                            </div>
+                        </div> <!-- End post content --> --}}
 
-                <div class="content">
-                    <div class="row">
+                        <div class="meta-bottom">
+                            <i class="bi bi-folder"></i>
+                            <ul class="cats">
+                                <li><a target="_blank" href="#">{{ $article->categories->first()->name }}</a></li>
+                            </ul>
 
-                        <!-- 2 first paragraph of the draft -->
-                        <div class="mt-4">
-                            <p><span class="fw-lighter">Pelajari seni negosiasi win-win solution untuk
-                                    mencapai kesepakatan yang saling menguntungkan dan membangun hubungan
-                                    bisnis yang langgeng. Artikel ini mengulas langkah-langkah
-                                    strategis dan teori fundamental dalam menerapkan teknik negosiasi
-                                    win-win solution, membuka jalan menuju kesuksesan bisnis berkelanjutan.
-                            </p>
-                        </div>
-                    </div><!-- End post content -->
-
-                    <div class="meta-bottom">
-                        <i class="bi bi-folder"></i>
-                        <ul class="cats">
-                            <li><a target="_blank" href="#">Business</a></li>
-                        </ul>
-
-            </article>
-            <Br></Br>
-            <article class="article">
-                <div class="post-img">
-                    <img src="{{ asset('guest/img') }}/intern/blog3.jpg" alt="Teknik menguasai Negosiasi" class="img-fluid">
-                </div>
-
-                <a href="{{route('blog.detail', ['id' => 1])}}" class="title">10 Tips Menganggur Produktif buat Kamu Para Jobseeker!</a>
-
-                <div class="meta-top">
-                    <ul>
-                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="article.html">Agatha
-                                Betasabrina
-                            </a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time
-                                    datetime="Tanggalpenulisan">6 Juni
-                                    2024</time></a></li>
-                    </ul>
-                </div><!-- End meta top -->
-
-                <div class="content">
-                    <div class="row">
-
-                        <!-- 2 first paragraph of the draft -->
-                        <div class="mt-4">
-                            <p><span class="fw-lighter">Pelajari seni negosiasi win-win solution untuk
-                                    mencapai kesepakatan yang saling menguntungkan dan membangun hubungan
-                                    bisnis yang langgeng. Artikel ini mengulas langkah-langkah
-                                    strategis dan teori fundamental dalam menerapkan teknik negosiasi
-                                    win-win solution, membuka jalan menuju kesuksesan bisnis berkelanjutan.
-                            </p>
-                        </div>
-                    </div><!-- End post content -->
-
-                    <div class="meta-bottom">
-                        <i class="bi bi-folder"></i>
-                        <ul class="cats">
-                            <li><a target="_blank" href="#">Business</a></li>
-                        </ul>
-
-            </article>
+                </article>
+                <br></br>
+            @endforeach
             <!-- End post article -->
         </div>
         <div class="col-lg-4 mt-4">

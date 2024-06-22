@@ -12,7 +12,7 @@ class Article extends Model
 
     public function writer()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id', 'users');
     }
 
     public function writers()
