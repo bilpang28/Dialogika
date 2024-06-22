@@ -178,6 +178,5 @@
 
             @include('layouts.guest.components.classes')
         </div>
-
     </div>
 @endsection
