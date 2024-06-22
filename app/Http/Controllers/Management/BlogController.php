@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Management;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\ArticleCategory;
 use App\Models\Category;
+use App\Models\User;
+use App\Models\UserArticle;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
@@ -14,9 +18,9 @@ class BlogController extends Controller
     public function index()
     {
         if (Auth::user()->role != 'admin') {
-            $articles = Article::where('user_id', Auth::user()->id)->with(['user', 'category'])->paginate(9);
+            $articles = Article::where('user_id', Auth::user()->id)->with(['writer', 'categories'])->paginate(9);
         } else {
-            $articles = Article::with(['user', 'category'])->paginate(9);
+            $articles = Article::with(['writer', 'categories'])->paginate(9);
         }
 
         return view('pages.management.blog.index', compact('articles'));
@@ -25,7 +29,8 @@ class BlogController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('pages.management.blog.create', compact('categories'));
+        $writers = User::where('role', 'writer')->get();
+        return view('pages.management.blog.create', compact('categories', 'writers'));
     }
 
     public function detail($id)
@@ -42,35 +47,46 @@ class BlogController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'category_id' => 'required|exists:categories,id',
-            'header_pic' => 'required|file|max:255',
-            'title' => 'required|string|max:30',
+            'category_id' => 'required|array',
+            'header_pic' => 'required|file',
+            'title' => 'required|string',
             'body' => 'required|string',
             'source' => 'nullable|string|max:255',
             'profile_pic' => 'nullable|file|max:255',
-        ]);
-        $file = $request->file("header_pic");
-        $header_pic = time() . "_" . $request->title . "." . $file->getClientOriginalExtension();
-        $file->storeAs('/article/header/', $header_pic, 'public');
-
-        $profile_pic = null;
-        if ($request->profile_pic) {
-            $file = $request->file("profile_pic");
-            $profile_pic = time() . "_" . $request->title . "." . $file->getClientOriginalExtension();
-            $file->storeAs('/articl/profile_pic/', $profile_pic, 'public');
-        }
-
-        $article = Article::create([
-            'user_id' => Auth::user()->id,
-            'category_id' => $request->category_id,
-            'header_pic' => $header_pic,
-            'title' => $request->title,
-            'body' => $request->body,
-            'source' => $request->source,
-            'profile_pic' => $profile_pic,
+            'writer_id' => 'required|array',
+            'keyword' => 'required|string',
         ]);
 
-        return redirect()->route('management.blog.index')->with('success', 'Article created successfully.');
+        DB::transaction(function () use ($request) {
+            $file = $request->file("header_pic");
+            $header_pic = time() . "_" . $request->title . "." . $file->getClientOriginalExtension();
+            $file->storeAs('/article/header/', $header_pic, 'public');
+
+            $article = Article::create([
+                'user_id' => Auth::user()->id,
+                'header_pic' => $header_pic,
+                'title' => $request->title,
+                'body' => $request->body,
+                'source' => $request->source,
+                'keyword' => $request->keyword,
+            ]);
+
+            foreach ($request->writer_id as $writer_id) {
+                UserArticle::create([
+                    'user_id' => $writer_id,
+                    'article_id' => $article->id,
+                ]);
+            }
+
+            foreach ($request->category_id as $category_id) {
+                ArticleCategory::create([
+                    'article_id' => $article->id,
+                    'category_id' => $category_id,
+                ]);
+            }
+        });
+
+        return response()->json(['message' => 'Article created successfully.']);
     }
 
     public function edit($id)
@@ -102,17 +118,9 @@ class BlogController extends Controller
             return abort(404);
         }
 
-        $header_pic = $article->header_pic;
         if ($request->header_pic) {
             $file = $request->file("header_pic");
             $file->storeAs('/article/header/', $article->header_pic, 'public');
-        }
-
-        $profile_pic = $article->profile_pic;
-        if ($request->profile_pic) {
-            $file = $request->file("profile_pic");
-            $profile_pic = time() . "_" . $request->title . "." . $file->getClientOriginalExtension();
-            $file->storeAs('/articl/profile_pic/', $profile_pic, 'public');
         }
 
         $article->update([

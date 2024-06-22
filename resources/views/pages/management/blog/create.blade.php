@@ -22,12 +22,11 @@
             </div>
         @endif
 
-        <form action="{{ route('management.blog.store') }}" method="POST" enctype="multipart/form-data">
+        <form id="form_create_article" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group mb-5">
                 <label for="category_id">Category</label>
-                <select name="category_id" id="category_id" class="form-control" data-control="select2" required>
-                    <option selected hidden disabled>Pilih Kategori</option>
+                <select name="category_id[]" id="category_id" class="form-control" data-control="select2" required multiple>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
@@ -41,28 +40,33 @@
 
             <div class="form-group mb-5">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" id="title" name="title" maxlength="30" required>
+                <input type="text" class="form-control" id="title" name="title" required>
             </div>
 
-            {{-- <div class="form-group mb-5">
-                <label for="source">Source *optional</label>
+            <div class="form-group mb-5">
+                <label for="source">Source</label>
                 <input type="text" class="form-control" id="source" name="source">
             </div>
 
             <div class="form-group mb-5">
-                <label for="profile_pic">Profile Picture </label>
-                <input type="file" class="form-control" id="profile_pic" name="profile_pic" accept="image/*">
-            </div> --}}
+                <label for="w">Writer</label>
+                <select name="writer_id[]" id="writer_id" class="form-control" data-control="select2" required multiple
+                    placeholder="Pilih siapa penulisnya">
+                    @foreach ($writers as $writer)
+                        <option value="{{ $writer->id }}">{{ $writer->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group mb-5">
+                <label for="keyword">Keyword</label>
+                <input type="text" class="form-control" id="keyword" name="keyword" placeholder="ayam, kucing, hewan">
+            </div>
 
             <div class="form-group mb-5">
                 <label for="body">Body</label>
                 <textarea id="kt_docs_tinymce_hidden" name="body" class="tox-target">
                 </textarea>
-            </div>
-
-            <div class="form-group mb-5">
-                <label for="tags">Tags</label>
-                <input type="text" class="form-control" id="tags" name="tags" placeholder="ayam, kucing, hewan">
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -78,6 +82,30 @@
                 "bullist numlist | outdent indent | blockquote subscript superscript | advlist | autolink | lists charmap | print preview |  code"
             ],
             plugins: "advlist autolink link image lists charmap print preview code"
+        });
+
+        $('#form_create_article').submit(function(e) {
+            e.preventDefault();
+            var formData = new FormData(this);
+            $.ajax({
+                url: "{{ route('management.blog.store') }}",
+                type: 'POST',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function(data) {
+                    toastr.success(data.message, 'Selamat 🚀 !');
+
+                    setTimeout(function() {
+                        window.location.href = "{{ route('management.blog.index') }}";
+                    }, 1000);
+                },
+                error: function(xhr, status, error) {
+                    const data = xhr.responseJSON;
+                    toastr.error(data, 'Opps!');
+                }
+            });
         });
     </script>
 @endsection

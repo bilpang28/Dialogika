@@ -18,7 +18,7 @@
                             <ul class="list-inline">
                                 <li class="list-inline-item">
                                     <i class="bi bi-person"></i>
-                                    <a href="article.html">{{ $article->user->name }}</a>
+                                    <a href="article.html">{{ $article->writers->first()->name }}</a>
                                 </li>
                                 <li class="list-inline-item">
                                     <i class="bi bi-clock"></i>
@@ -31,7 +31,7 @@
                             <hr class="my-3">
                             <div class="meta-bottom">
                                 <i class="bi bi-folder"></i><a target="_blank" href="#">
-                                    {{ $article->category->name }}</a>
+                                    {{ $article->categories->first()->name }}</a>
                             </div>
                         </div>
                     </div>

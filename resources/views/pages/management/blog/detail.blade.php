@@ -20,7 +20,7 @@
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
                                         <i class="bi bi-person"></i>
-                                        <a href="article.html">{{ $article->user->name }}</a>
+                                        <a href="article.html">{{ $article->writers->first()->name }}</a>
                                     </li>
                                     <li class="list-inline-item">
                                         <i class="bi bi-clock"></i>
@@ -29,8 +29,11 @@
                                     </li>
                                 </ul>
                                 <div class="meta-bottom">
-                                    <i class="bi bi-folder"></i><a target="_blank" href="#">
-                                        {{ $article->category->name }}</a>
+                                    <i class="bi bi-folder"></i>
+                                    @foreach ($article->categories as $category)
+                                        <a target="_blank" href="#">
+                                            {{ $category->name }}</a>,
+                                    @endforeach
                                 </div>
                                 <hr class="my-3">
                                 <div class="content">

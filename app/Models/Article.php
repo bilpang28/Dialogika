@@ -10,13 +10,18 @@ class Article extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function user()
+    public function writer()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function category()
+    public function writers()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsToMany(User::class, 'user_articles');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'article_categories');
     }
 }

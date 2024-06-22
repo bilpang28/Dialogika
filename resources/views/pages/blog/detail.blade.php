@@ -115,9 +115,22 @@
                         </div>
                         </div>
                     </div>
+                    <div class="comments">
 
+                        <h4 class="comments-count">Writer Notes</h4>
 
+                        <div id="comment-2" class="comment">
+                          <div class="d-flex">
+                            <div class="comment-img"><img src="#" alt="Beerama" class="rounded"></div>
+                            <div>
+                              <time datetime="hh/dd/yy">28 November 2024</time>
+                              <p>
+                                In order to better protect your Creative Market account, we'd like to verify a sign-in from the device noted below. Help us keep your account secure by letting us know if this was you
+                              </p>
+                            </div>
+                          </div>
 
+                        </div>
             </article><!-- End post article -->
 
         </div>
@@ -147,6 +160,7 @@
                         <p class="intro">Penulis <b>Eni Irnawati</b></p>
                         <span class="designation">Content Writer - Dialogika</span>
                     </div>
+
                     <div class="tgAbout-social">
                         <a href="https://instagram.com/dialogika.co"><i class="fab fa-instagram"></i></a>
                         <a href="https://twitter.com/dialogika_co"><i class="fab fa-twitter"></i></a>
