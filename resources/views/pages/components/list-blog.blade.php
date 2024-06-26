@@ -31,7 +31,7 @@
                             <hr class="my-3">
                             <div class="meta-bottom">
                                 <i class="bi bi-folder"></i><a target="_blank" href="#">
-                                    {{ $article->categories->first()->name }}</a>
+                                    {{ $article->categories->first()->name ?? "-" }}</a>
                             </div>
                         </div>
                     </div>

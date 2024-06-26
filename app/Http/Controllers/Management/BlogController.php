@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\ArticleCategory;
 use App\Models\Category;
+use App\Models\Rating;
 use App\Models\User;
 use App\Models\UserArticle;
 use Illuminate\Http\Request;
@@ -139,15 +140,21 @@ class BlogController extends Controller
             'id' => 'required|exists:articles,id',
         ]);
 
-        $article = Article::findOrFail($request->id);
-        // if ($article->user_id != Auth::user()->id || Auth::user()->role != 'admin') {
-        //     // return 404
-        //     return response()->json(['message' => 'Unauthorized'], 401);
-        // }
+        DB::transaction(function () use ($request) {
+            ArticleCategory::where('article_id', $request->id)->delete();
+            Rating::where('article_id', $request->id)->delete();
+            UserArticle::where('article_id', $request->id)->delete();
+            $article = Article::findOrFail($request->id);
+            // if ($article->user_id != Auth::user()->id || Auth::user()->role != 'admin') {
+            //     // return 404
+            //     return response()->json(['message' => 'Unauthorized'], 401);
+            // }
 
-        Storage::disk('public')->delete('/article/header/' . $article->header_pic);
+            Storage::disk('public')->delete('/article/header/' . $article->header_pic);
 
-        $article->delete();
+            $article->delete();
+        });
+
         return response()->json(['message' => 'Article deleted successfully.']);
     }
 }
