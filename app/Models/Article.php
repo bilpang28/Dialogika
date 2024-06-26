@@ -24,4 +24,9 @@ class Article extends Model
     {
         return $this->belongsToMany(Category::class, 'article_categories');
     }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
 }

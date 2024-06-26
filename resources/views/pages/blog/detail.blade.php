@@ -112,20 +112,21 @@
                 </div>
                 <div class="comments">
 
-                    <h4 class="comments-count">Writer Notes</h4>
+                    <h4 class="comments-count">Komentar dari Pembaca:</h4>
 
                     <div id="comment-2" class="comment">
-                        <div class="d-flex">
-                            <div class="comment-img"><img src="#" alt="Beerama" class="rounded"></div>
-                            <div>
-                                <time datetime="hh/dd/yy">28 November 2024</time>
-                                <p>
-                                    In order to better protect your Creative Market account, we'd like to verify a sign-in
-                                    from the device noted below. Help us keep your account secure by letting us know if this
-                                    was you
-                                </p>
+                        @foreach ($article->ratings as $rating)
+                            <div class="d-flex">
+                                <div class="comment-img"><img src="{{asset('sense/media/avatars/blank.png')}}" alt="Beerama" class="rounded"></div>
+                                <div>
+                                    <time datetime="hh/dd/yy">{{$rating->name}}, {{ Carbon\Carbon::parse($rating->craeted_at)->format('d M Y') }}</time>
+                                    <p>
+                                        {{$rating->comment}}
+                                    </p>
+                                </div>
                             </div>
-                        </div>
+                            <hr>
+                        @endforeach
 
                     </div>
                 </div>

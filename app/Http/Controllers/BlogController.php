@@ -17,7 +17,7 @@ class BlogController extends Controller
 
     public function detail($id)
     {
-        $article = Article::with(['writer', 'writers', 'categories'])->findOrFail($id);
+        $article = Article::with(['writer', 'writers', 'categories', 'ratings'])->findOrFail($id);
 
         return view('pages.blog.detail', compact('article'));
     }
