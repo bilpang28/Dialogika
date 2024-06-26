@@ -28,11 +28,13 @@
                             <a href="{{route('management.blog.index')}}" class="menu-title">Blog</a>
                         </span>
                     </div>
-                    <div class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
-                        <span class="menu-link">
-                            <a href="{{route('management.user.index')}}" class="menu-title">Pengguna</a>
-                        </span>
-                    </div>
+                    @if (Auth::user()->role == 'admin')
+                        <div class="menu-item menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
+                            <span class="menu-link">
+                                <a href="{{route('management.user.index')}}" class="menu-title">Pengguna</a>
+                            </span>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

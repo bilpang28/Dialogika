@@ -33,6 +33,8 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'role' => 'required',
+            'password' => 'required',
+            'comfirm_password' => 'required|same:password',
         ]);
 
         $profile_pic = null;

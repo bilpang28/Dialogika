@@ -52,6 +52,18 @@
                                 </label>
                                 <input type="file" class="form-control form-control-solid" name="profile_pic">
                             </div>
+                            <div class="col-12 mb-3">
+                                <label class="d-flex align-items-center fs-6 form-label mb-2">
+                                    <span class="fw-bold">Password</span>
+                                </label>
+                                <input type="password" class="form-control form-control-solid" name="password">
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label class="d-flex align-items-center fs-6 form-label mb-2">
+                                    <span class="fw-bold">Confirm Password</span>
+                                </label>
+                                <input type="password" class="form-control form-control-solid" name="comfirm_password">
+                            </div>
                         </div>
                     </div>
                     <div class="text-center mt-9">
