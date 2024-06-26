@@ -36,10 +36,10 @@ class BlogController extends Controller
     public function detail($id)
     {
         $article = Article::findOrFail($id);
-        if ($article->user_id != Auth::user()->id || Auth::user()->role != 'admin') {
-            // return 404
-            return abort(404);
-        }
+        // if ($article->user_id != Auth::user()->id || Auth::user()->role != 'admin') {
+        //     // return 404
+        //     return abort(404);
+        // }
 
         return view('pages.management.blog.detail', compact('article'));
     }
@@ -92,10 +92,10 @@ class BlogController extends Controller
     public function edit($id)
     {
         $article = Article::findOrFail($id);
-        if ($article->user_id != Auth::user()->id || Auth::user()->role != 'admin') {
-            // return 404
-            return abort(404);
-        }
+        // if ($article->user_id != Auth::user()->id || Auth::user()->role != 'admin') {
+        //     // return 404
+        //     return abort(404);
+        // }
 
         $categories = Category::all();
         return view('pages.management.blog.edit', compact('categories', 'article'));
@@ -113,10 +113,10 @@ class BlogController extends Controller
         ]);
 
         $article = Article::findOrFail($id);
-        if ($article->user_id != Auth::user()->id || Auth::user()->role != 'admin') {
-            // return 404
-            return abort(404);
-        }
+        // if ($article->user_id != Auth::user()->id || Auth::user()->role != 'admin') {
+        //     // return 404
+        //     return abort(404);
+        // }
 
         if ($request->header_pic) {
             $file = $request->file("header_pic");
@@ -140,10 +140,10 @@ class BlogController extends Controller
         ]);
 
         $article = Article::findOrFail($request->id);
-        if ($article->user_id != Auth::user()->id || Auth::user()->role != 'admin') {
-            // return 404
-            return response()->json(['message' => 'Unauthorized'], 401);
-        }
+        // if ($article->user_id != Auth::user()->id || Auth::user()->role != 'admin') {
+        //     // return 404
+        //     return response()->json(['message' => 'Unauthorized'], 401);
+        // }
 
         Storage::disk('public')->delete('/article/header/' . $article->header_pic);
 
