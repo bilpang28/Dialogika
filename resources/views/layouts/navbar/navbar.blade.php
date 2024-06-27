@@ -83,14 +83,14 @@
                     <div class="cursor-pointer symbol symbol-circle symbol-35px symbol-md-45px"
                         data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
                         data-kt-menu-placement="bottom-end">
-                        <img src="{{$user->profile_pic ? asset('storage/user/profile/' . $user->profile_pic) : asset('sense/media/avatars/blank.png')}}" alt="user" />
+                        <img src="{{Auth::user()->profile_pic ? asset('storage/user/profile/' . Auth::user()->profile_pic) : asset('sense/media/avatars/blank.png')}}" alt="user" />
                     </div>
                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-title-gray-500 menu-state-bg menu-state-color fw-semibold py-4 fs-base w-275px"
                         data-kt-menu="true">
                         <div class="menu-item px-3">
                             <div class="menu-content d-flex align-items-center px-3">
                                 <div class="symbol symbol-circle symbol-45px me-5">
-                                    <img alt="Logo" src="{{$user->profile_pic ? asset('storage/user/profile/' . $user->profile_pic) : asset('sense/media/avatars/blank.png')}}" />
+                                    <img alt="Logo" src="{{Auth::user()->profile_pic ? asset('storage/user/profile/' . Auth::user()->profile_pic) : asset('sense/media/avatars/blank.png')}}" />
                                 </div>
                                 <div class="d-flex flex-column">
                                     <div class="fw-bolder d-flex align-items-center fs-6">{{ auth()->user()->name }}
