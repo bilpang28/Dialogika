@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $articles = Article::with(['writer', 'categories'])->paginate(9);
 

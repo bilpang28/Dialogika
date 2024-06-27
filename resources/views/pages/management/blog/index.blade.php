@@ -31,6 +31,19 @@
 
             </div>
         </div>
+
+        {{-- search input --}}
+        <div class="row mb-6">
+            <div class="col-lg-12">
+                <form action="{{ route('management.blog.index') }}" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search" placeholder="Search..."
+                            value="{{ request()->query('search') }}">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
         @include('pages.components.list-blog')
     </div>
 @endsection

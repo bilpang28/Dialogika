@@ -16,12 +16,12 @@ use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         if (Auth::user()->role != 'admin') {
-            $articles = Article::where('user_id', Auth::user()->id)->with(['writer', 'categories'])->paginate(9);
+            $articles = Article::where('title', 'LIKE', '%' . $request->search . '%')->where('user_id', Auth::user()->id)->with(['writer', 'categories'])->paginate(9);
         } else {
-            $articles = Article::with(['writer', 'categories'])->paginate(9);
+            $articles = Article::where('title', 'LIKE', '%' . $request->search . '%')->with(['writer', 'categories'])->paginate(9);
         }
 
         return view('pages.management.blog.index', compact('articles'));
