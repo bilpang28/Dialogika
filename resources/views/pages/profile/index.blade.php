@@ -14,15 +14,15 @@
             <div class="row justify-content-center">
                 <div class="col-lg-3 mb-6 mb-md-0">
                     <div class="card bgi-no-repeat mb-6"
-                        style="background-position: bottom 0 right 0; background-size: 125px; background-image:url('https://erp.comtelindo.com/sense/media/svg/general/rhone.svg')">
+                        style="background-position: bottom 0 right 0; background-size: 125px; background-image:url('{{asset("sense/media/svg/general/rhone.svg")}}')">
                         <div class="card-body">
                             <div class="row align-items-center">
                                 <div class="col-lg-12 text-center mt-10">
                                     <div class="image-input image-input-outline"
-                                        style="background-image: url('https://erp.comtelindo.com/sense/media/avatars/blank.png')">
+                                        style="background-image: url('{{asset("sense/media/avatars/blank.png")}}')">
                                         <!--begin::Preview existing avatar-->
                                         <div class="image-input-wrapper w-125px h-125px"
-                                            style="background-image: url('https://erp.comtelindo.com/storage/personal/avatar/1702720266_Super Admin.xxxjpg')">
+                                            style="background-image: url('{{$user->profile_pic ? asset('storage/user/profile/' . $user->profile_pic) : asset('sense/media/avatars/blank.png')}}')">
                                         </div>
                                         <!--end::Preview existing avatar-->
 
@@ -40,8 +40,8 @@
                                         </span>
                                     </div>
                                     <div class="mt-4">
-                                        <span class="fw-bolder align-items-center fs-2 d-block">Super Admin</span>
-                                        <p class="text-gray-500 fs-8">1234567</p>
+                                        <span class="fw-bolder align-items-center fs-2 d-block">{{$user->name}}</span>
+                                        <p class="text-gray-500 fs-8">{{$user->role}}</p>
                                         <span class="badge badge-light-warning px-3 py-2"></span>
                                     </div>
                                 </div>
@@ -50,16 +50,12 @@
                                     <table class="table g-1">
                                         <tbody>
                                             <tr>
-                                                <td class="w-25px"><i class="fa-solid fa-phone text-gray-500"></i></td>
-                                                <td class=""><span>+62 -</span></td>
-                                            </tr>
-                                            <tr>
                                                 <td class="w-25px"><i class="fa-solid fa-envelope text-gray-500"></i></td>
-                                                <td class=""><span>superadmin@gmail.com</span></td>
+                                                <td class=""><span>{{$user->email}}</span></td>
                                             </tr>
                                             <tr>
-                                                <td class="w-25px"><i class="fa-solid fa-map-pin text-gray-500"></i></td>
-                                                <td class=""><span>Tim Jakarta</span></td>
+                                                <td class="w-25px"><i class="fa-solid fa-calendar text-gray-500"></i></td>
+                                                <td class=""><span>{{$user->birth_date ?? "-"}}</span></td>
                                             </tr>
                                         </tbody>
                                     </table>

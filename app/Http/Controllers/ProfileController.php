@@ -16,7 +16,9 @@ class ProfileController extends Controller
             $articles = Article::with(['writer', 'categories'])->paginate(9);
         }
 
-        return view('pages.profile.index' , compact('articles'));
+        $user = Auth::user();
+
+        return view('pages.profile.index' , compact('articles', 'user'));
     }
 
     public function update(Request $request)
