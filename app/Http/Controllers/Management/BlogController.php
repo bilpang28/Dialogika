@@ -98,8 +98,9 @@ class BlogController extends Controller
         //     return abort(404);
         // }
 
+        $writers = User::where('role', 'writer')->get();
         $categories = Category::all();
-        return view('pages.management.blog.edit', compact('categories', 'article'));
+        return view('pages.management.blog.edit', compact('categories', 'article', 'writers'));
     }
 
     public function update($id, Request $request)
@@ -107,7 +108,7 @@ class BlogController extends Controller
         $request->validate([
             'category_id' => 'required|exists:categories,id',
             'header_pic' => 'nullable|file|max:255',
-            'title' => 'required|string|max:30',
+            'title' => 'required|string',
             'body' => 'required|string',
             'source' => 'nullable|string|max:255',
             'profile_pic' => 'nullable|file|max:255',
@@ -125,7 +126,6 @@ class BlogController extends Controller
         }
 
         $article->update([
-            'category_id' => $request->category_id,
             'title' => $request->title,
             'body' => $request->body,
             'source' => $request->source,
