@@ -60,7 +60,7 @@ class BlogController extends Controller
 
         DB::transaction(function () use ($request) {
             $file = $request->file("header_pic");
-            $header_pic = time() . "_" . $request->title . "." . $file->getClientOriginalExtension();
+            $header_pic = time() . "." . $file->getClientOriginalExtension();
             $file->storeAs('/article/header/', $header_pic, 'public');
 
             $article = Article::create([

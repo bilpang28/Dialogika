@@ -40,7 +40,7 @@ class UserController extends Controller
         $profile_pic = null;
         if ($request->profile_pic) {
             $file = $request->file("profile_pic");
-            $profile_pic = time() . "_" . $request->title . "." . $file->getClientOriginalExtension();
+            $profile_pic = time() . "." . $file->getClientOriginalExtension();
             $file->storeAs('/user/profile/', $profile_pic, 'public');
         }
 
@@ -72,7 +72,7 @@ class UserController extends Controller
             if ($user->profile_pic) {
                 $profile_pic = $user->profile_pic;
             } else {
-                $profile_pic = time() . "_" . $request->title . "." . $file->getClientOriginalExtension();
+                $profile_pic = time() . "." . $file->getClientOriginalExtension();
                 $user->update(['profile_pic' => $profile_pic]);
             }
             $file->storeAs('/user/profile/', $profile_pic, 'public');
