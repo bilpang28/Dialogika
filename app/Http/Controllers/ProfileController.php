@@ -11,7 +11,7 @@ class ProfileController extends Controller
     public function index()
     {
         if (Auth::user()->role != 'admin') {
-            $articles = Article::where('user_id', Auth::user()->id)->with(['user', 'category'])->paginate(9);
+            $articles = Article::where('user_id', Auth::user()->id)->with(['writer', 'categories'])->paginate(9);
         } else {
             $articles = Article::with(['writer', 'categories'])->paginate(9);
         }
