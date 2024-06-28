@@ -36,9 +36,7 @@
                 </div><!-- End meta top -->
 
                 <div class="content">
-                    <div class="row">
-                        {!! $article->body !!}
-                    </div><!-- End post content -->
+                    {!! $article->body !!}
 
                     <div class="meta-bottom">
                         <i class="bi bi-folder"></i>
@@ -117,11 +115,13 @@
                     <div id="comment-2" class="comment">
                         @foreach ($article->ratings as $rating)
                             <div class="d-flex">
-                                <div class="comment-img"><img src="{{asset('sense/media/avatars/blank.png')}}" alt="Beerama" class="rounded"></div>
+                                <div class="comment-img"><img src="{{ asset('sense/media/avatars/blank.png') }}"
+                                        alt="Beerama" class="rounded"></div>
                                 <div>
-                                    <time datetime="hh/dd/yy">{{$rating->name}}, {{ Carbon\Carbon::parse($rating->craeted_at)->format('d M Y') }}</time>
+                                    <time datetime="hh/dd/yy">{{ $rating->name }},
+                                        {{ Carbon\Carbon::parse($rating->craeted_at)->format('d M Y') }}</time>
                                     <p>
-                                        {{$rating->comment}}
+                                        {{ $rating->comment }}
                                     </p>
                                 </div>
                             </div>
@@ -142,7 +142,7 @@
                         <div class="tgAbout-thumb">
                             @if ($writer->profile_pic)
                                 <img src="{{ asset('storage/user/profile/' . $writer->profile_pic) }}"
-                                    class="img-thumbnail" alt="XXXKEYWORDS">
+                                    class="" alt="XXXKEYWORDS" width="200px" height="200px" style="object-fit: cover !important">
                             @else
                                 <img src="{{ asset('guest/img') }}/logo-square.png" class="img-thumbnail"
                                     alt="XXXKEYWORDS">
