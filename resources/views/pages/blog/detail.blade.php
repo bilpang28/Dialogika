@@ -32,6 +32,14 @@
                                     href="blog-details.html"><time
                                         datetime="Tanggalpenulisan">{{ Carbon\Carbon::parse($article->craeted_at)->format('d M Y') }}</time></a>
                             </li>
+                            <li class="d-flex align-items-center"><i class="bi bi-star"></i> <a
+                                    href="#">{{ $article->ratings->avg('rating') }} Starts</a></li>
+                            </li>
+                        </ul>
+                        <ul style="margin-top: 20px">
+                            <li class="d-flex align-items-center"> <i class="bi bi-star-fill"></i> <a
+                                    href="#comments">{{ $article->ratings->avg('rating') }} | {{$article->ratings->count()}} Reviews</a></li>
+                            </li>
                         </ul>
                     </div><!-- End meta top -->
 
@@ -47,7 +55,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="blog-details-area clearfix">
+                    <div class="blog-details-area clearfix" id="comments">
                         <div class="blog-details-bottom">
                             <div class="row align-items-baseline">
                                 <div class="col-xl-6 col-md-5">
@@ -170,10 +178,11 @@
                     <div class="card">
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item"><b class="title-b3">Key Takeaways</b></li>
+                            @foreach (explode(',', $article->keyword) as $keyword)
+                                <li class="list-group-item">{{ $keyword }}</li>
+
+                            @endforeach
                             <li class="list-group-item">Motivasi kuat adalah kompasmu</li>
-                            <li class="list-group-item">Kuasai seni manajemen waktu</li>
-                            <li class="list-group-item">Cari pekerjaan fleksibel</li>
-                            <li class="list-group-item">Jaga kesehatan fisik dan mental</li>
                         </ul>
                     </div>
                 </div>
