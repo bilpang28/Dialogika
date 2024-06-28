@@ -18,7 +18,7 @@
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-        <a href="../index.html" class="logo me-auto"><img src="{{asset('guest')}}/img/logo.webp" alt=""
+        <a href="{{route('blog.index')}}" class="logo me-auto"><img src="{{asset('guest')}}/img/logo.webp" alt=""
                 class="img-fluid"></a>
 
         <nav id="navbar" class="navbar order-last order-lg-0">
