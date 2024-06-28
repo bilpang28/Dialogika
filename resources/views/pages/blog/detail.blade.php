@@ -17,121 +17,122 @@
             </div>
         </div>
         <div class="col-lg-7 mt-4">
-            <article class="article">
-                <div class="post-img">
-                    <img src="{{ asset('storage/article/header') . '/' . $article->header_pic }}"
-                        alt="Teknik menguasai Negosiasi" class="img-fluid">
-                </div>
+            <div class="card">
+                <img src="{{ asset('storage/article/header') . '/' . $article->header_pic }}" style="width: 100%"
+                    class="card-img-top">
+                <article class="card-body">
 
-                <h1 class="title">{{ $article->title }}</h1>
+                    <h1 class="title">{{ $article->title }}</h1>
 
-                <div class="meta-top">
-                    <ul>
-                        <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
-                                href="#">{{ $article->writer->name }}</a></li>
-                        <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time
-                                    datetime="Tanggalpenulisan">{{ Carbon\Carbon::parse($article->craeted_at)->format('d M Y') }}</time></a>
-                        </li>
-                    </ul>
-                </div><!-- End meta top -->
-
-                <div class="content">
-                    {!! $article->body !!}
-
-                    <div class="meta-bottom">
-                        <i class="bi bi-folder"></i>
-                        <ul class="cats">
-                            @foreach ($article->categories as $category)
-                                <li><a target="_blank" href="#">{{ $category->name }}, </a></li>
-                            @endforeach
+                    <div class="meta-top">
+                        <ul>
+                            <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a
+                                    href="#">{{ $article->writer->name }}</a></li>
+                            <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a
+                                    href="blog-details.html"><time
+                                        datetime="Tanggalpenulisan">{{ Carbon\Carbon::parse($article->craeted_at)->format('d M Y') }}</time></a>
+                            </li>
                         </ul>
+                    </div><!-- End meta top -->
+
+                    <div class="content" style="padding: -100px">
+                        {!! $article->body !!}
+
+                        <div class="meta-bottom">
+                            <i class="bi bi-folder"></i>
+                            <ul class="cats">
+                                @foreach ($article->categories as $category)
+                                    <li><a target="_blank" href="#">{{ $category->name }}, </a></li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-details-area clearfix">
-                    <div class="blog-details-bottom">
-                        <div class="row align-items-baseline">
-                            <div class="col-xl-6 col-md-5">
-                                <div class="blog-details-share">
-                                    <h6 class="share-title">Rate This Article:</h6>
-                                    <a data-bs-toggle="modal" data-bs-target="#modalRating">
-                                        <form class="rate">
-                                            <label for="star5" data-value="5" class="rating" title="text">5
-                                                stars</label>
-                                            <label for="star4" data-value="4" class="rating" title="text">4
-                                                stars</label>
-                                            <label for="star3" data-value="3" class="rating" title="text">3
-                                                stars</label>
-                                            <label for="star2" data-value="2" class="rating" title="text">2
-                                                stars</label>
-                                            <label for="star1" data-value="1" class="rating" title="text">1
-                                                star</label>
-                                        </form>
-                                    </a>
+                    <div class="blog-details-area clearfix">
+                        <div class="blog-details-bottom">
+                            <div class="row align-items-baseline">
+                                <div class="col-xl-6 col-md-5">
+                                    <div class="blog-details-share">
+                                        <h6 class="share-title">Rate This Article:</h6>
+                                        <a data-bs-toggle="modal" data-bs-target="#modalRating">
+                                            <form class="rate">
+                                                <label for="star5" data-value="5" class="rating" title="text">5
+                                                    stars</label>
+                                                <label for="star4" data-value="4" class="rating" title="text">4
+                                                    stars</label>
+                                                <label for="star3" data-value="3" class="rating" title="text">3
+                                                    stars</label>
+                                                <label for="star2" data-value="2" class="rating" title="text">2
+                                                    stars</label>
+                                                <label for="star1" data-value="1" class="rating" title="text">1
+                                                    star</label>
+                                            </form>
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!-- Button trigger modal -->
-                <div class="modal fade" id="modalRating" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-                    aria-labelledby="modalRatingLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="modalRatingLabel">Give Me Your Comment</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="reply-form">
-                                    <p>Masukkan pendapat anda dalam kolom komentar berikut</p>
-                                    <form id="rating_form" role="form">
-                                        @csrf
-                                        <div class="row">
-                                            <input type="hidden" name="rating" id="rating">
-                                            <input type="hidden" name="article_id" value="{{ $article->id }}">
-                                            <div class="col-md-12 form-group">
-                                                <input type="text" name="name" class="form-control"
-                                                    placeholder="Masukkan nama lengkap" />
-                                            </div>
-                                            <div class="col-md-12 mt-2">
-                                                <textarea class="form-control" name="comment" rows="5" placeholder="Masukkan Komentar anda"></textarea>
-                                            </div>
-
-                                        </div>
+                    <!-- Button trigger modal -->
+                    <div class="modal fade" id="modalRating" data-bs-backdrop="static" data-bs-keyboard="false"
+                        tabindex="-1" aria-labelledby="modalRatingLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="modalRatingLabel">Give Me Your Comment</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
                                 </div>
+                                <div class="modal-body">
+                                    <div class="reply-form">
+                                        <p>Masukkan pendapat anda dalam kolom komentar berikut</p>
+                                        <form id="rating_form" role="form">
+                                            @csrf
+                                            <div class="row">
+                                                <input type="hidden" name="rating" id="rating">
+                                                <input type="hidden" name="article_id" value="{{ $article->id }}">
+                                                <div class="col-md-12 form-group">
+                                                    <input type="text" name="name" class="form-control"
+                                                        placeholder="Masukkan nama lengkap" />
+                                                </div>
+                                                <div class="col-md-12 mt-2">
+                                                    <textarea class="form-control" name="comment" rows="5" placeholder="Masukkan Komentar anda"></textarea>
+                                                </div>
+
+                                            </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-primary">submit</button>
+                                </div>
+                                </form>
                             </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-primary">submit</button>
-                            </div>
-                            </form>
                         </div>
                     </div>
-                </div>
-                <div class="comments">
+                    <div class="comments">
 
-                    <h4 class="comments-count">Komentar dari Pembaca:</h4>
+                        <h4 class="comments-count">Komentar dari Pembaca:</h4>
 
-                    <div id="comment-2" class="comment">
-                        @foreach ($article->ratings as $rating)
-                            <div class="d-flex">
-                                <div class="comment-img"><img src="{{ asset('sense/media/avatars/blank.png') }}"
-                                        alt="Beerama" class="rounded"></div>
-                                <div>
-                                    <time datetime="hh/dd/yy">{{ $rating->name }},
-                                        {{ Carbon\Carbon::parse($rating->craeted_at)->format('d M Y') }}</time>
-                                    <p>
-                                        {{ $rating->comment }}
-                                    </p>
+                        <div id="comment-2" class="comment">
+                            @foreach ($article->ratings as $rating)
+                                <div class="d-flex">
+                                    <div class="comment-img"><img src="{{ asset('sense/media/avatars/blank.png') }}"
+                                            alt="Beerama" class="rounded"></div>
+                                    <div>
+                                        <time datetime="hh/dd/yy">{{ $rating->name }},
+                                            {{ Carbon\Carbon::parse($rating->craeted_at)->format('d M Y') }}</time>
+                                        <p>
+                                            {{ $rating->comment }}
+                                        </p>
+                                    </div>
                                 </div>
-                            </div>
-                            <hr>
-                        @endforeach
+                                <hr>
+                            @endforeach
 
+                        </div>
                     </div>
-                </div>
 
-            </article><!-- End post article -->
+                </article><!-- End post article -->
+            </div>
 
         </div>
         <div class="col-lg-4 mt-4">
@@ -141,8 +142,9 @@
                     <div class="tgAbout-me swiper-slider" style="margin-bottom:50px">
                         <div class="tgAbout-thumb">
                             @if ($writer->profile_pic)
-                                <img src="{{ asset('storage/user/profile/' . $writer->profile_pic) }}"
-                                    class="" alt="XXXKEYWORDS" width="200px" height="200px" style="object-fit: cover !important">
+                                <img src="{{ asset('storage/user/profile/' . $writer->profile_pic) }}" class=""
+                                    alt="XXXKEYWORDS" width="200px" height="200px"
+                                    style="object-fit: cover !important">
                             @else
                                 <img src="{{ asset('guest/img') }}/logo-square.png" class="img-thumbnail"
                                     alt="XXXKEYWORDS">
@@ -164,6 +166,17 @@
 
             <div class="sidebar mt-4 order-2 order-md-2">
                 {{-- @include('layouts.guest.components.category') --}}
+                <div class="col-lg-5 mt-4">
+                    <div class="card">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><b class="title-b3">Key Takeaways</b></li>
+                            <li class="list-group-item">Motivasi kuat adalah kompasmu</li>
+                            <li class="list-group-item">Kuasai seni manajemen waktu</li>
+                            <li class="list-group-item">Cari pekerjaan fleksibel</li>
+                            <li class="list-group-item">Jaga kesehatan fisik dan mental</li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="sidebar-item tags mt-4">
                     <h3 class="sidebar-title">Tags</h3>
                     <ul class="mt-3">
