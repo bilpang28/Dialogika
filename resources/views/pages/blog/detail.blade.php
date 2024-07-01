@@ -53,16 +53,18 @@
                                     <li><a target="_blank" href="#">{{ $category->name }}, </a></li>
                                 @endforeach
                             </ul>
+                            <i class="bi bi-link-45deg"></i> <a href="{{ $article->source }}"
+                                target="_blank" style="text-decoration: underline">Link Sumber Article</a>
                         </div>
                     </div>
                     <div class="blog-details-area clearfix" id="comments">
                         <div class="blog-details-bottom">
                             <div class="row align-items-baseline">
                                 <div class="col-xl-6 col-md-5">
-                                    <div class="blog-details-share">
-                                        <h6 class="share-title">Rate This Article:</h6>
-                                        <a data-bs-toggle="modal" data-bs-target="#modalRating">
-                                            <form class="rate">
+                                    <div class="blog-details-share" style="display: inline-block">
+                                        <a class="share-title" style="font-size: 20px; display: inline-block">Rate This Article:</a>
+                                        <a data-bs-toggle="modal" data-bs-target="#modalRating" style="display: inline-block">
+                                            <form class="rate" style="display: inline-block">
                                                 <label for="star5" data-value="5" class="rating" title="text">5
                                                     stars</label>
                                                 <label for="star4" data-value="4" class="rating" title="text">4

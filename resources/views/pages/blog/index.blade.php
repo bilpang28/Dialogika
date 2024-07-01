@@ -20,7 +20,8 @@
             @foreach ($articles as $article)
                 <article class="article">
                     <div class="post-img">
-                        <img src="{{ asset('storage/article/header') .'/'. $article->header_pic }}" alt="Teknik menguasai Negosiasi" class="img-fluid">
+                        <img src="{{ asset('storage/article/header') .'/'. $article->header_pic }}" alt="Teknik menguasai Negosiasi"  style="width: 100%"
+                        class="card-img-top">
                     </div>
 
                     <a href="{{route('blog.detail', ['id' => $article->id])}}" class="title">{{$article->title}}</a>
